@@ -1,0 +1,12 @@
+RewriteEngine on
+
+RewriteCond %{SERVER_PORT} 80
+RewriteCond %{HTTP_HOST} ^(www\.)?dewestwindmedia\.com
+RewriteRule ^(.*)$ https://www.dewestwindmedia.com/$1 [R,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [NC,L]
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [NC,L]
+
+ErrorDocument 404 http://www.dewestwindmedia.com/404.html
